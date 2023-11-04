@@ -20,7 +20,7 @@ export default function Board({ x, y }) {
                 <div
                   key={col}
                   className={`aspect-square w-full ${
-                    (row + col) % 2 === 0 ? "bg-amber-700" : "bg-amber-100"
+                    (row + col) % 2 === 0 ? "bg-[#c18557]" : "bg-amber-100"
                   }`}
                 ></div>
               ))}
