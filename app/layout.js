@@ -21,10 +21,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-screen">
+    <html lang="en">
       <body className={openSans.className}>
-        <Navbar/>
-        {children}
+        <div className="h-screen">
+          <Navbar/>
+          <div className="flex justify-center">
+            <div className="max-w-screen-lg">
+              {children}
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   )
