@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Board from './components/Board'
 import FancyButton from './components/Button'
 import GameMaker from './components/GameMaker'
+import JoinGame from './components/gameJoiner'
 
 export default function Home() {
   console.log("Fish?!")
@@ -9,9 +10,8 @@ export default function Home() {
     <main>
       <div className="grid grid-cols-1 md:grid-cols-2 w-full">
         <div className="m-4">
-          <FancyButton>
-            <span>Join Game</span>
-          </FancyButton>
+          
+          <JoinGame codes={}/>
           <GameMaker />
           <FancyButton>
           <span>Against AI <span className="ml-2 text-xs">powered by</span><Image className="inline-block ml-2" src="/Intel.png" width={32} height={32}></Image></span>
