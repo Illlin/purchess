@@ -107,16 +107,6 @@ piece_types = {
 }
 
 setups = {
-    "Stupid Setup": {
-        "width": 8,
-        "height": 8,
-        "pieces": [
-            {'type': 'rook', 'colour': 'black', 'x': 0, 'y': 0},
-            {'type': 'rook', 'colour': 'black', 'x': 7, 'y': 0},
-            {'type': 'rook', 'colour': 'white', 'x': 0, 'y': 7},
-            {'type': 'rook', 'colour': 'white', 'x': 7, 'y': 7},
-        ]
-    },
     "Standard": {
         "width": 8,
         "height": 8,
@@ -179,22 +169,26 @@ setups = {
                 {"x":7, "y":1, "type":"pawn", "colour":"black"},
                 {"x":8, "y":1, "type":"pawn", "colour":"black"},
                 {"x":9, "y":1, "type":"pawn", "colour":"black"},
-                {"x":0, "y":6, "type":"pawn", "colour":"white"},
-                {"x":1, "y":6, "type":"pawn", "colour":"white"},
-                {"x":2, "y":6, "type":"pawn", "colour":"white"},
-                {"x":3, "y":6, "type":"pawn", "colour":"white"},
-                {"x":4, "y":6, "type":"pawn", "colour":"white"},
-                {"x":5, "y":6, "type":"pawn", "colour":"white"},
-                {"x":6, "y":6, "type":"pawn", "colour":"white"},
-                {"x":7, "y":6, "type":"pawn", "colour":"white"},
-                {"x":0, "y":7, "type":"rook", "colour":"white"},
-                {"x":1, "y":7, "type":"knight", "colour":"white"},
-                {"x":2, "y":7, "type":"bishop", "colour":"white"},
-                {"x":3, "y":7, "type":"queen", "colour":"white"},
-                {"x":4, "y":7, "type":"king", "colour":"white"},
-                {"x":5, "y":7, "type":"bishop", "colour":"white"},
-                {"x":6, "y":7, "type":"knight", "colour":"white"},
-                {"x":7, "y":7, "type":"rook", "colour":"white"}
+                {"x":0, "y":8, "type":"king", "colour":"white"},
+                {"x":1, "y":8, "type":"pawn", "colour":"white"},
+                {"x":2, "y":8, "type":"pawn", "colour":"white"},
+                {"x":3, "y":8, "type":"pawn", "colour":"white"},
+                {"x":4, "y":8, "type":"pawn", "colour":"white"},
+                {"x":5, "y":8, "type":"pawn", "colour":"white"},
+                {"x":6, "y":8, "type":"pawn", "colour":"white"},
+                {"x":7, "y":8, "type":"pawn", "colour":"white"},
+                {"x":8, "y":8, "type":"pawn", "colour":"white"},
+                {"x":9, "y":8, "type":"pawn", "colour":"white"},
+                {"x":0, "y":9, "type":"king", "colour":"white"},
+                {"x":1, "y":9, "type":"empress", "colour":"white"},
+                {"x":2, "y":9, "type":"queen", "colour":"white"},
+                {"x":3, "y":8, "type":"princess", "colour":"white"},
+                {"x":4, "y":8, "type":"queen", "colour":"white"},
+                {"x":5, "y":8, "type":"queen", "colour":"white"},
+                {"x":6, "y":8, "type":"queen", "colour":"white"},                {"x":1, "y":9, "type":"knight", "colour":"white"},
+                {"x":7, "y":9, "type":"bishop", "colour":"white"},
+                {"x":8, "y":9, "type":"knight", "colour":"white"},
+                {"x":9, "y":9, "type":"rook", "colour":"white"},
         ]
     },
     "Horse Lords vs. Castle Folk": {
