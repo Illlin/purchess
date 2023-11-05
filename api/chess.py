@@ -4,7 +4,7 @@ class Piece: # A generic piece
         self.y = y
         self.colour = colour
 
-        self.name = type
+        self.name = name
 
     def get_moves(self, board):
         return []
@@ -125,6 +125,8 @@ class PawnPiece(Piece):
             to_take = board.piece_at(*t)
             if to_take != None and to_take.colour != self.colour:
                 destinations.append(t)
+
+        return destinations
 
         # TODO: En passant
 
