@@ -187,8 +187,8 @@ def get_moves(game_id):
 
         moves = []
 
-        if colour != game.turn:
-            return {"player_colour": colour, "username": username, "moves": []}
+        # if colour != game.turn:
+        #     return {"player_colour": colour, "username": username, "moves": []}
 
         for p in game.pieces:
             print(f"Looking at piece with colour {p.colour}")

@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         <div className="h-screen">
           <Navbar/>
           <div className="flex justify-center">
-            <div className="max-w-screen-lg">
+            <div className="max-w-screen-lg w-full">
               {children}
             </div>
           </div>
