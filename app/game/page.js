@@ -6,12 +6,13 @@ import FancyButton from '../components/Button'
 import GameMaker from '../components/GameMaker'
 import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation'
+import Winner from '../components/winnerPopup'
 
 export default function Home() {
   const searchParams = useSearchParams()
   const gameName = searchParams.get('gameName')
 
-  const [data, setData] = useState({ width: 8, height: 8, pieces: [] })
+  const [data, setData] = useState({ width: 8, height: 8, pieces: [], players:{}, winner:"none" })
   const [moves, setMoves] = useState({moves:[]})
 
   const getStatus = () => {
@@ -65,7 +66,7 @@ export default function Home() {
   return (
     <div className="w-full">
       <div className="flex-1 grid grid-cols-2 justify-center m-4">
-        <div className="w-full border-4 border-black">
+        <div className="w-full border-4 border-black h-fit">
           <Board
             x={data.width}
             y={data.height}
@@ -75,12 +76,18 @@ export default function Home() {
             update={update}
           />
         </div>
-        <div className="w-full">
-          <span className="bg-red-100 w-full"> {JSON.stringify(moves)} </span>
+        <div className="border-4 border-black m-4 p-4 mt-0 h-fit bg-yellow-100">
+          <Winner winner={data.winner}/>
+          <span className="grid grid-cols-3 items-center">
+            <span className="text-right font-bold text-2xl">{data.players.white}</span>
+            <span className="text-center">vs</span>
+            <span className="text-left font-bold text-2xl">{data.players.black}</span>
+          </span>
+          <div className="m-4 flex grid grid-cols-2 items-center">
+            <span className="text-right text-2xl font-bold">To move: </span><Image className="flex inline-block" src={`/pieces/${data.turn}/king.png`} width={64} height={64} />
+          </div>
         </div>
       </div>
-
-
     </div>
   )
 }

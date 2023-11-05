@@ -78,14 +78,14 @@ export default function Board({ x, y, pieces, moves, gameId, update }) {
       {points.map((point, index) => (
         <div>
           <button 
-            className="rounded-full bg-green-500"
+            className="rounded-full bg-green-500 opacity-50"
             onClick={() => { postGameData({from_x:point.fx, from_y:point.fy, to_x:point.x, to_y:point.y}); update(); setPoints([]); }}
             style={{
               position: "absolute",
-              top: `${(100 * point.y + 25/2) / height}%`,
-              left: `${(100 * point.x + 25/2) / width}%`,
-              width: `${75 / width}%`,
-              height: `${75 / height}%`,
+              top: `${(100 * point.y + 50/2) / height}%`,
+              left: `${(100 * point.x + 50/2) / width}%`,
+              width: `${50 / width}%`,
+              height: `${50 / height}%`,
               ...squareStyle,
             }}
           />
