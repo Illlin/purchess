@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const Piece = ({ code, colour, style  }) => {
-    let image_url = "/pieces/" + colour.toLowerCase() + "/" + code + ".png";
+    let image_url = "/pieces/" + colour.toLowerCase() + "/" + code.toLowerCase() + ".png";
     
 
     return (
