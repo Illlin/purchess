@@ -16,6 +16,8 @@ class Piece: # A generic piece
             target = board.piece_at(x, y)
 
             if target != None:
+                if target.name == "king":
+                    board.winner = self.colour
                 board.del_at(x, y)
 
             self.x, self.y = (x, y)
@@ -140,6 +142,7 @@ class Board:
         self.castling = {'white': True, 'black': True} # Castling rights
 
         self.half_move_number = 0
+        self.winner = None
 
     def piece_at(self, x, y):
         for p in self.pieces:
