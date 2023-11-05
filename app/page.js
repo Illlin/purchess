@@ -21,7 +21,7 @@ export default function Home() {
             <span className=""> <a className="font-bold">8</a> Players online </span>
             <span className="text-right"> <a className="font-bold">2</a> Players in game </span>
           </div>
-          <div className="w-full border-4 border-black mt-2 rounded-lg">
+          <div className="w-full border-4 border-black mt-2">
             <Board 
               x={8} 
               y={8} 
@@ -77,7 +77,7 @@ export default function Home() {
             </div>
             <div>
               <Image 
-                src="/pieces/white/knook.png"
+                src="/pieces/knook.png"
                 width={256}
                 height={256}
                 alt="Knook"
