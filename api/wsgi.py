@@ -187,8 +187,8 @@ def get_moves(game_id):
 
         moves = []
 
-        # if colour != game.turn:
-        #     return {"player_colour": colour, "username": username, "moves": []}
+        if colour != game.turn:
+            return {"player_colour": colour, "username": username, "moves": []}
 
         for p in game.pieces:
             print(f"Looking at piece with colour {p.colour}")
@@ -208,16 +208,21 @@ def get_moves(game_id):
 def send_move(game_id):
     try:
         game = games[game_id]
+        print("Cookie")
         username = request.cookies.get("user")
         colour = 'white' if game.players['white'] == username else 'black'
 
         if colour != game.turn:
             return "{'message': 'Not your turn!'}", 400
 
-        from_x = int(request.form['from_x'])
-        from_y = int(request.form['from_y'])
-        to_x = int(request.form['to_x'])
-        to_y = int(request.form['to_y'])
+        request_json = request.json
+
+        print(request_json)
+
+        from_x = int(request_json['from_x'])
+        from_y = int(request_json['from_y'])
+        to_x = int(request_json['to_x'])
+        to_y = int(request_json['to_y'])
 
         p = game.piece_at(from_x, from_y)
         if p == None:

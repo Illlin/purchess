@@ -12,7 +12,7 @@ export default function Home() {
   const gameName = searchParams.get('gameName')
 
   const [data, setData] = useState({ width: 8, height: 8, pieces: [] })
-  const [moves, setMoves] = useState({})
+  const [moves, setMoves] = useState({moves:[]})
 
   const getStatus = () => {
     const fetchData = async () => {
@@ -48,10 +48,15 @@ export default function Home() {
     fetchData();
   }
 
-  useEffect(() => {
+  const update = () => {
     getMoves();
     getStatus();
-  }, []);
+    console.log(update)
+  }
+
+  useEffect(() => {
+    update()
+  }, [data, moves]);
 
   console.log("Fish?!")
   return (
@@ -62,6 +67,9 @@ export default function Home() {
             x={data.width}
             y={data.height}
             pieces={data.pieces}
+            moves={moves.moves}
+            gameId={gameName}
+            update={update}
           />
         </div>
         <div className="w-full">
