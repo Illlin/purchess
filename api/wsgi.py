@@ -133,7 +133,7 @@ setups = {
                 {"x":7, "y":7, "type":"rook", "colour":"white"}
         ]
     },
-    "Standard": {
+    "ClassicCaleb": {
         "width": 8,
         "height": 8,
         "pieces": [
