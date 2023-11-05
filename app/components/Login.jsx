@@ -91,7 +91,7 @@ export default function Login () {
                     onClick={setCookie}
                     className="bg-[#c18557] text-white p-2 rounded"
                   >
-                    Set Cookie
+                    Set Username
                   </button>
                 </div>
               </div>
