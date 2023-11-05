@@ -31,7 +31,7 @@ export default function Board({ x, y, pieces }) {
         {pieces.map((piece, index) => (
             <div>
                 <Piece
-                    code={piece.code}
+                    code={piece.type}
                     colour={piece.colour}
                     style={{
                     top: `${(100 * piece.y) / height}%`,
