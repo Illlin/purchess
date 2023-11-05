@@ -51,7 +51,7 @@ Example response:
 }
 ```
 
-## Create game (POST /api/game/create)
+## Create game (POST /api/game/<game_id>)
 
 POST Params:
  - `time`: Starting time (in seconds)
@@ -64,6 +64,10 @@ Creates a new game and if all goes well, returns:
 
 200 OK
 
+```json
+{"message": "Game creation successful"}
+```
+
 Otherwise:
 
 400 Bad Request
@@ -71,7 +75,7 @@ application/json
 
 ```json
 {
-    "error": <why the error happened>
+    "message": <why the error happened>
 }
 ```
 
