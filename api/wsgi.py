@@ -6,65 +6,65 @@ import copy
 
 games = {}
 piece_types = {
-    "rook": chess.ParamPiece(0,0,'', {
+    "rook": chess.ParamPiece("rook", 0,0,'', {
         'movements': [((0,1), -1, False), ((0,-1), -1, False),
                       ((1,0), -1, False), ((-1,0), -1, False)],
         'knightlike': False
     }),
-    "bishop": chess.ParamPiece(0,0,'', {
+    "bishop": chess.ParamPiece("bishop", 0,0,'', {
         'movements': [((1,1), -1, False), ((1,-1), -1, False),
                       ((-1,-1), -1, False), ((-1,1), -1, False)],
         'knightlike': False
     }),
-    "knight": chess.ParamPiece(0,0,'', {
+    "knight": chess.ParamPiece("knight", 0,0,'', {
         'movements': [],
         'knightlike': True, 'knightdist_a': 1, 'knightdist_b': 2,
     }),
     "pawn": chess.PawnPiece(0,0,''),
-    "priest": chess.ParamPiece(0,0,'', {
+    "priest": chess.ParamPiece("priest", 0,0,'', {
         'movements': [((1,1), 2, False), ((1,-1), 2, False),
                       ((-1,-1), 2, False), ((-1,1), 2, False)],
         'knightlike': False
     }),
-    "cardinal": chess.ParamPiece(0,0,'', {
+    "cardinal": chess.ParamPiece("cardinal", 0,0,'', {
         'movements': [((1,1), -1, False), ((1,-1), -1, False),
                       ((-1,-1), -1, False), ((-1,1), -1, False),
                       ((0,1), 1, False), ((0,-1), 1, False),
                       ((1,0), 1, False), ((-1,0), 1, False)],
         'knightlike': False
     }),
-    "crusader": chess.ParamPiece(0,0,'', {
+    "crusader": chess.ParamPiece("crusader", 0,0,'', {
         'movements': [((1,1), -1, False), ((1,-1), -1, False),
                       ((-1,-1), -1, False), ((-1,1), -1, False)],
         'knightlike': True, 'knightdist_a': 1, 'knightdist_b': 2
     }),
-    "paladin": chess.ParamPiece(0,0,'', {
+    "paladin": chess.ParamPiece("paladin", 0,0,'', {
         'movements': [((1,1), -1, True), ((1,-1), -1, True),
                       ((-1,-1), -1, True), ((-1,1), -1, True)],
         'knightlike': True, 'knightdist_a': 1, 'knightdist_b': 2
     }),
-    "rock": chess.ParamPiece(0,0,'', {
+    "rock": chess.ParamPiece("rock", 0,0,'', {
         'movements': [((0,1), 3, False), ((0,-1), 3, False),
                       ((1,0), 3, False), ((-1,0), 3, False)],
         'knightlike': False
     }),
-      "knook": chess.ParamPiece(0,0,'', {
+      "knook": chess.ParamPiece("knook", 0,0,'', {
         'movements': [((0,1), -1, False), ((0,-1), -1, False),
                       ((1,0), -1, False), ((-1,0), -1, False)],
         'knightlike': True, 'knightdist_a': 1, 'knightdist_b': 2,
     }),
-    "giraffe": chess.ParamPiece(0,0,'', {
+    "giraffe": chess.ParamPiece("giraffe", 0,0,'', {
         'movements': [],
         'knightlike': True, 'knightdist_a': 1, 'knightdist_b': 3,
     }),
-    "queen": chess.ParamPiece(0,0,'', {
+    "queen": chess.ParamPiece("queen", 0,0,'', {
         'movements': [((0,1), -1, False), ((0,-1), -1, False),
                       ((1,0), -1, False), ((-1,0), -1, False),
                       ((1,1), -1, False), ((1,-1), -1, False),
                       ((-1,-1), -1, False), ((-1,1), -1, False)],
         'knightlike': False
     }),
-    "empress": chess.ParamPiece(0,0,'', {
+    "empress": chess.ParamPiece("empress", 0,0,'', {
         'movements': [((0,1), -1, False), ((0,-1), -1, False),
                       ((1,0), -1, False), ((-1,0), -1, False),
                       ((1,1), -1, False), ((1,-1), -1, False),
@@ -74,7 +74,7 @@ piece_types = {
 }
 
 setups = {
-    "setup1": {
+    "Stupid Setup": {
         "width": 8,
         "height": 8,
         "pieces": [
@@ -82,6 +82,44 @@ setups = {
             {'type': 'rook', 'colour': 'black', 'x': 7, 'y': 0},
             {'type': 'rook', 'colour': 'white', 'x': 0, 'y': 7},
             {'type': 'rook', 'colour': 'white', 'x': 7, 'y': 7},
+        ]
+    },
+    "Standard + Knook": {
+        "width": 8,
+        "height": 8,
+        "pieces": [
+                {"x":0, "y":0, "type":"knook", "colour":"black"},
+                {"x":1, "y":0, "type":"knight", "colour":"black"},
+                {"x":2, "y":0, "type":"bishop", "colour":"black"},
+                {"x":3, "y":0, "type":"queen", "colour":"black"},
+                {"x":4, "y":0, "type":"king", "colour":"black"},
+                {"x":5, "y":0, "type":"bishop", "colour":"black"},
+                {"x":6, "y":0, "type":"knight", "colour":"black"},
+                {"x":7, "y":0, "type":"rook", "colour":"black"},
+                {"x":0, "y":1, "type":"pawn", "colour":"black"},
+                {"x":1, "y":1, "type":"pawn", "colour":"black"},
+                {"x":2, "y":1, "type":"pawn", "colour":"black"},
+                {"x":3, "y":1, "type":"pawn", "colour":"black"},
+                {"x":4, "y":1, "type":"pawn", "colour":"black"},
+                {"x":5, "y":1, "type":"pawn", "colour":"black"},
+                {"x":6, "y":1, "type":"pawn", "colour":"black"},
+                {"x":7, "y":1, "type":"pawn", "colour":"black"},
+                {"x":0, "y":6, "type":"pawn", "colour":"white"},
+                {"x":1, "y":6, "type":"pawn", "colour":"white"},
+                {"x":2, "y":6, "type":"pawn", "colour":"white"},
+                {"x":3, "y":6, "type":"pawn", "colour":"white"},
+                {"x":4, "y":6, "type":"pawn", "colour":"white"},
+                {"x":5, "y":6, "type":"pawn", "colour":"white"},
+                {"x":6, "y":6, "type":"pawn", "colour":"white"},
+                {"x":7, "y":6, "type":"pawn", "colour":"white"},
+                {"x":0, "y":7, "type":"rook", "colour":"white"},
+                {"x":1, "y":7, "type":"knight", "colour":"white"},
+                {"x":2, "y":7, "type":"bishop", "colour":"white"},
+                {"x":3, "y":7, "type":"queen", "colour":"white"},
+                {"x":4, "y":7, "type":"king", "colour":"white"},
+                {"x":5, "y":7, "type":"bishop", "colour":"white"},
+                {"x":6, "y":7, "type":"knight", "colour":"white"},
+                {"x":7, "y":7, "type":"rook", "colour":"white"}
         ]
     }
 }
@@ -109,6 +147,18 @@ def get_game_state(game_id):
         game = games[game_id]
     except KeyError:
         return {'message': 'Game doesn\'t exist'}, 400
+
+    try:
+        username = request.cookies.get("user")
+        print(f"Looking at game with username {username}")
+
+        if username not in game.players.values(): # The second player to join plays against the host
+            if game.players['white'] == '':
+                game.players['white'] = username
+            elif game.players['black'] == '':
+                game.players['black'] = username
+    except KeyError:
+        pass
 
     return {
         "game_id": game_id,

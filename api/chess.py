@@ -1,8 +1,10 @@
 class Piece: # A generic piece
-    def __init__(self, x, y, colour):
+    def __init__(self, name, x, y, colour):
         self.x = x
         self.y = y
         self.colour = colour
+
+        self.name = type
 
     def get_moves(self, board):
         return []
@@ -17,6 +19,7 @@ class Piece: # A generic piece
                 board.del_at(x, y)
 
             self.x, self.y = (x, y)
+            board.half_move_number += 1
 
             return True
         else:
@@ -36,8 +39,8 @@ class ParamPiece(Piece):
 #     knightlike      (bool)
 #     knightdist_a    (int)
 #     knightdist_b    (int)
-    def __init__(self, x, y, colour, params):
-        Piece.__init__(self, x, y, colour)
+    def __init__(self, name, x, y, colour, params):
+        Piece.__init__(self, name, x, y, colour)
         
         self.params = params
 
@@ -89,7 +92,7 @@ class ParamPiece(Piece):
 
 class PawnPiece(Piece):
     def __init__(self, x, y, colour):
-        Piece.__init__(self, x, y, colour)
+        Piece.__init__(self, "pawn", x, y, colour)
 
         # Which move did I move two squares forward?
         # Used for calculating EN PASSANT
@@ -136,6 +139,8 @@ class Board:
         self.turn = 'white'
         self.castling = {'white': True, 'black': True} # Castling rights
 
+        self.half_move_number = 0
+
     def piece_at(self, x, y):
         for p in self.pieces:
             if p.x == x and p.y == y:
@@ -146,3 +151,26 @@ class Board:
         for p in self.pieces:
             if p.x == x and p.y == y:
                 self.pieces.remove(p)
+
+# TODO: For Caleb :)
+
+# I think we will have no checkmate, just let the king be taken? This is much
+# easier to implement and essentially just as good.
+# Similarly, I think moving into check should be allowed.
+
+# Game should have an "is ended" state, which is set when a king is taken, and a
+# winner field to say who the winner is.
+
+# When a piece is deleted (look at del_at function), check if that piece was a
+# king. If it was, then set those game end values.
+
+# Would be good to try and implement castling (might be hard, might be easy), and
+# en passant.
+
+# Promotion might be quite easy actually, override the move_to() function for the
+# pawn class so that if the pawn gets to the end row it deletes itself and spawns
+# another type of piece in its place. Will be harder if you want a pop-up to choose
+# which piece to promote (rather than just promoting to queen), you'll need to
+# discuss this with sol cause it needs to work well with the frontend.
+
+# Clock maybe? Might not be worth it.
