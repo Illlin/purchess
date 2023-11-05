@@ -86,10 +86,10 @@ piece_types = {
         'knightlike': False
     }),
     "princess": chess.ParamPiece("princess", 0,0,'', {
-        'movements': [((0,1), 2, False), ((0,2), 2, False),
-                      ((1,0), 2, False), ((-1,0), 2, False),
-                      ((1,1), 2, False), ((1,-1), 2, False),
-                      ((-1,-1), 2, False), ((-1,1), 2, False)],
+        'movements': [((0,1), 3, False), ((0,-1), 3, False),
+                      ((1,0), 3, False), ((-1,0), 3, False),
+                      ((1,1), 3, False), ((1,-1), 3, False),
+                      ((-1,-1), 3, False), ((-1,1), 3, False)],
         'knightlike': False
     }),
     "empress": chess.ParamPiece("empress", 0,0,'', {
