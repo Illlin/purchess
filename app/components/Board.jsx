@@ -82,7 +82,7 @@ export default function Board({ x, y, pieces, moves, gameId, update, black }) {
             onClick={() => { postGameData({from_x:point.fx, from_y:point.fy, to_x:point.x, to_y:point.y}); update(); setPoints([]); }}
             style={{
               position: "absolute",
-              top: `${black ? 100 - (100 * (point.y+1) -50/2) / height : (100 * point.y) / height}%`,
+              top: `${black ? 100 - (100 * (point.y+1) -50/2) / height : (100 * point.y +50/2) / height}%`,
               left: `${(100 * point.x + 50/2) / width}%`,
               width: `${50 / width}%`,
               height: `${50 / height}%`,
