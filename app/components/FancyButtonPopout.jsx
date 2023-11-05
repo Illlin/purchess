@@ -4,7 +4,7 @@ const FancyButtonPopout = ({ onClick, children, popoutComponent }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="relative w-1/2 inline-block">
+    <div className="relative w-full inline-block">
       <button
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}

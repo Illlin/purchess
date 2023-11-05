@@ -4,7 +4,7 @@ class Piece: # A generic piece
         self.y = y
         self.colour = colour
 
-        self.name = type
+        self.name = name
 
     def get_moves(self, board):
         return []

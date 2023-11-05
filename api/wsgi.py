@@ -169,7 +169,7 @@ def get_game_state(game_id):
         "players": game.players,
         "turn": game.turn,
         "castling": game.castling,
-        "pieces": [{"colour": p.colour, "x": p.x, "y": p.y} for p in game.pieces]
+        "pieces": [{"colour": p.colour, "x": p.x, "y": p.y, "type":p.name} for p in game.pieces]
     }
 
 @app.get("/api/game/<string:game_id>/valid_moves") # Get valid moves for current user
@@ -227,15 +227,24 @@ def make_game(game_id):
     else:
         try:
             username = request.cookies.get('user')
-            millis = int(request.form['time']) * 1000
-            incr_millis = int(request.form['increment']) * 1000
-            host_colour = request.form['host_colour']
 
-            setup = setups[request.form["setup"]]
+            request_data = request.json
+
+            print(request_data)
+
+            millis = int(request_data['time']) * 1000
+            incr_millis = int(request_data['increment']) * 1000
+            host_colour = request_data['host_colour']
+
+            setup = setups[request_data["setup"]]
+            
+            
 
             if host_colour not in ["black", "white"]: abort(400)
 
             games[game_id] = chess.Board(setup["width"], setup["height"])
+
+            
 
             games[game_id].millis = {
                 'white': millis,
@@ -247,7 +256,11 @@ def make_game(game_id):
             games[game_id].width = setup["width"]
             games[game_id].height = setup["height"]
 
+            print("working")
+            print(setup)
+
             for p in setup["pieces"]:
+                print(p)
                 new_piece = copy.deepcopy(piece_types[p["type"]])
                 new_piece.colour = p["colour"]
                 new_piece.x = p["x"]
