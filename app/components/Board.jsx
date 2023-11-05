@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image'
+import Piece from './Piece';
 
-export default function Board({ x, y }) {
+export default function Board({ x, y, pieces }) {
     let width = x;
     let height = y;
   
@@ -27,19 +28,21 @@ export default function Board({ x, y }) {
             </div>
           ))}
         </div>
-        <Image
-            src="/Knook.png"
-            width={100}
-            height={100}
-            className="absolute invert"
-            style={{
-            top: `${(100 * 1) / height}%`,
-            left: `${(100 * 3) / width}%`,
-            width: `${100 / width}%`,
-            height: `${100 / height}%`,
-            ...squareStyle,
-            }}
-        />
+        {pieces.map((piece, index) => (
+            <div>
+                <Piece
+                    code={piece.code}
+                    colour={piece.colour}
+                    style={{
+                    top: `${(100 * piece.y) / height}%`,
+                    left: `${(100 * piece.x) / width}%`,
+                    width: `${100 / width}%`,
+                    height: `${100 / height}%`,
+                    ...squareStyle,
+                    }}
+                />
+            </div>
+        ))}
       </div>
     );
   }

@@ -1,25 +1,14 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-export default function Piece(x, y, code) {
-
-    image_url = "/Knook.png"
+const Piece = ({ code, colour, style  }) => {
+    let image_url = "/pieces/" + colour.toLowerCase() + "/" + code + ".png";
+    
 
     return (
-        <Image
-            src="/Knook.png"
-            width={100}
-            height={100}
-            className="absolute"
-            style={{
-                top: `${(100 * 1) / height}%`,
-                left: `${(100 * 3) / width}%`,
-                width: `${100 / width}%`,
-                height: `${100 / height}%`,
-                ...squareStyle,
-            }}
-        />
-    )
-}
+        <div style={{ position: 'absolute', ...style }}>
+            <Image src={image_url} width={100} height={100} />
+        </div>
+    );
+};
 
-
-
+export default Piece;
