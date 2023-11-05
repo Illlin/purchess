@@ -84,9 +84,6 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="border-4 border-black bg-amber-100 rounded-lg">
-            bbb
-          </div>
         </div>
       </div>
     </main>
