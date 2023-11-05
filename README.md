@@ -1,3 +1,5 @@
+![a game](purchess4.png)
+
 ## Inspiration
 
 As can be seen by our close to 2000 chess games against each other on Lichess, we quite like chess. There are lots of existing chess variations of course, with all sorts of unusual features, but there's no simple way for standard people to create their own arbitrary variations easily.
@@ -7,6 +9,8 @@ In this project we designed and implemented a Python-based chess server API, wit
 As a whole, we call this project "Purche$$", cleverly combining the words "Purchase" and "Chess". Our original plan was to implement upgrade trees and a mechanic where players can _purchase_ pieces to use in a game with a set budget.
 
 ## Chess Generalisation
+
+![our pieces](purchess1.png)
 
 We looked at existing chess pieces and considered other types that we want to implement, and generalised their behaviour into a small set of parameters which can easily apply to every standard chess piece and an infinite set of custom ones. These parameters are:
 
