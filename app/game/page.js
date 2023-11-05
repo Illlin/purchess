@@ -12,7 +12,7 @@ export default function Home() {
   const searchParams = useSearchParams()
   const gameName = searchParams.get('gameName')
 
-  const [data, setData] = useState({ width: 8, height: 8, pieces: [], players:{}, winner:"none" })
+  const [data, setData] = useState({ width: 8, height: 8, pieces: [], players:{}, winner:"none", colour:"white" })
   const [moves, setMoves] = useState({moves:[]})
 
   const getStatus = () => {
@@ -74,6 +74,7 @@ export default function Home() {
             moves={moves.moves}
             gameId={gameName}
             update={update}
+            black={data.colour == "black"}
           />
         </div>
         <div className="border-4 border-black m-4 p-4 mt-0 h-fit bg-yellow-100">

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Piece from './Piece';
 import { useState } from 'react';
 
-export default function Board({ x, y, pieces, moves, gameId, update }) {
+export default function Board({ x, y, pieces, moves, gameId, update, black }) {
   let [points, setPoints] = useState([])
   let width = x;
   let height = y;
@@ -66,7 +66,7 @@ export default function Board({ x, y, pieces, moves, gameId, update }) {
             colour={piece.colour}
             onClick={() => { clickedSquare(piece.x, piece.y) }}
             style={{
-              top: `${(100 * piece.y) / height}%`,
+              top: `${black ? 100 - (100 * (piece.y+1)) / height : (100 * piece.y) / height}%`,
               left: `${(100 * piece.x) / width}%`,
               width: `${100 / width}%`,
               height: `${100 / height}%`,
@@ -82,7 +82,7 @@ export default function Board({ x, y, pieces, moves, gameId, update }) {
             onClick={() => { postGameData({from_x:point.fx, from_y:point.fy, to_x:point.x, to_y:point.y}); update(); setPoints([]); }}
             style={{
               position: "absolute",
-              top: `${(100 * point.y + 50/2) / height}%`,
+              top: `${black ? 100 - (100 * (point.y+1) -50/2) / height : (100 * point.y) / height}%`,
               left: `${(100 * point.x + 50/2) / width}%`,
               width: `${50 / width}%`,
               height: `${50 / height}%`,
