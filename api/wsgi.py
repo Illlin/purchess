@@ -6,6 +6,12 @@ import copy
 
 games = {}
 piece_types = {
+    "king": chess.ParamPiece("king", 0,0,'', {
+        'movements': [((-1,-1), 1, False), ((-1,0), 1, False), ((-1, 1), 1, False),
+                      ((0,-1), 1, False), ((0,1), 1, False),
+                      ((1,-1), 1, False), ((1, 0), 1, False), ((1, 1), 1, False)],
+        'knightlike': False
+    }),
     "rook": chess.ParamPiece("rook", 0,0,'', {
         'movements': [((0,1), -1, False), ((0,-1), -1, False),
                       ((1,0), -1, False), ((-1,0), -1, False)],
@@ -178,7 +184,12 @@ def get_moves(game_id):
         game = games[game_id]
         username = request.cookies.get("user")
         colour = 'white' if game.players['white'] == username else 'black'
+
         moves = []
+
+        if colour != game.turn:
+            return {"player_colour": colour, "username": username, "moves": []}
+
         for p in game.pieces:
             print(f"Looking at piece with colour {p.colour}")
             if p.colour == colour:
