@@ -118,7 +118,8 @@ def get_game_state(game_id):
         "incr_millis": game.incr_millis,
         "players": game.players,
         "turn": game.turn,
-        "castling": game.castling
+        "castling": game.castling,
+        "pieces": [{"colour": p.colour, "x": p.x, "y": p.y} for p in game.pieces]
     }
 
 @app.get("/api/game/<string:game_id>/valid_moves") # Get valid moves for current user
