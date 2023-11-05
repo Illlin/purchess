@@ -48,15 +48,18 @@ export default function Home() {
     fetchData();
   }
 
-  const update = () => {
-    getMoves();
-    getStatus();
-    console.log(update)
-  }
-
+  const update = async () => {
+    const delay = 1000; // Set the delay time in milliseconds (adjust as needed)
+    await new Promise(resolve => setTimeout(resolve, delay));
+    console.log("slow down");
+    // Call getMoves API
+    await getMoves();
+    await getStatus();
+  };
+  
   useEffect(() => {
-    update()
-  }, [data, moves]);
+    update();
+  }, [data]);
 
   console.log("Fish?!")
   return (
