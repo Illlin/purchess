@@ -175,7 +175,8 @@ def get_game_state(game_id):
         "players": game.players,
         "turn": game.turn,
         "castling": game.castling,
-        "pieces": [{"colour": p.colour, "x": p.x, "y": p.y, "type":p.name} for p in game.pieces]
+        "pieces": [{"colour": p.colour, "x": p.x, "y": p.y, "type":p.name} for p in game.pieces],
+        "winner": winner if winner else "none",
     }
 
 @app.get("/api/game/<string:game_id>/valid_moves") # Get valid moves for current user
