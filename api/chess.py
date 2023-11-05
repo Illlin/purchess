@@ -69,6 +69,8 @@ class ParamPiece(Piece):
 
                 # Sliders stop when they reach a piece
                 if not jumper and moving_to != None:
+                    if moving_to.colour != self.colour:
+                        destinations.append((tmpx, tmpy))
                     break # Finished this arm
                 
                 # Even a jumper can't move onto own colour
@@ -87,7 +89,7 @@ class ParamPiece(Piece):
                 moving_to = board.piece_at(mv[0], mv[1])
                 # If moving to blank or other-colour'd square
                 if moving_to == None or moving_to.colour != self.colour: # Can't move onto own colour piece
-                    if mv not in destinations:
+                    if mv[0] >= 0 and mv[0] < board.width and mv[1] >= 0 and mv[1] < board.height and mv not in destinations:
                         destinations.append(mv)
 
         return destinations
