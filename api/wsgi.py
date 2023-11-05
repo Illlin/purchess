@@ -89,10 +89,6 @@ setups = {
 def create_app():
     app = Flask(__name__)
 
-    # with shelve.open("datashelf") as db:
-    #     if "games" in db:
-    #         games = db["games"]
-
     print("Purchess initialised")
     return app
 
@@ -112,7 +108,7 @@ def get_game_state(game_id):
     try:
         game = games[game_id]
     except KeyError:
-        abort(400)
+        return {'message': 'Game doesn\'t exist'}, 400
 
     return {
         "game_id": game_id,

@@ -58,7 +58,7 @@ POST Params:
  - `increment`: Increment per turn (in seconds)
  - `setup`: Name of setup (valid name in setups database)
  - `host_colour`: Which colour the host plays ("black" | "white")
- - `width`, `height`: Board dimensions
+ - `setup`: The name of which setup to use for this game
 
 Creates a new game and if all goes well, returns:
 
