@@ -126,6 +126,8 @@ class PawnPiece(Piece):
             if to_take != None and to_take.colour != self.colour:
                 destinations.append(t)
 
+        return destinations
+
         # TODO: En passant
 
 class Board:

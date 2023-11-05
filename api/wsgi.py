@@ -90,11 +90,11 @@ setups = {
             {'type': 'rook', 'colour': 'white', 'x': 7, 'y': 7},
         ]
     },
-    "Standard + Knook": {
+    "Standard": {
         "width": 8,
         "height": 8,
         "pieces": [
-                {"x":0, "y":0, "type":"knook", "colour":"black"},
+                {"x":0, "y":0, "type":"rook", "colour":"black"},
                 {"x":1, "y":0, "type":"knight", "colour":"black"},
                 {"x":2, "y":0, "type":"bishop", "colour":"black"},
                 {"x":3, "y":0, "type":"queen", "colour":"black"},
@@ -193,7 +193,6 @@ def get_moves(game_id):
         for p in game.pieces:
             print(f"Looking at piece with colour {p.colour}")
             if p.colour == colour:
-                print("Getting moves for piece.")
                 for move in p.get_moves(game):
                     moves.append({"from_x": p.x, "from_y": p.y, "to_x": move[0], "to_y": move[1]})
 
