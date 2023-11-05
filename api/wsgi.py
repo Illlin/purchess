@@ -185,7 +185,7 @@ setups = {
                 {"x":3, "y":9, "type":"princess", "colour":"white"},
                 {"x":4, "y":9, "type":"queen", "colour":"white"},
                 {"x":5, "y":9, "type":"queen", "colour":"white"},
-                {"x":6, "y":9, "type":"queen", "colour":"white"},                
+                {"x":6, "y":9, "type":"queen", "colour":"white"},
                 {"x":7, "y":9, "type":"bishop", "colour":"white"},
                 {"x":8, "y":9, "type":"knight", "colour":"white"},
                 {"x":9, "y":9, "type":"rook", "colour":"white"},
