@@ -55,23 +55,17 @@ export default function Home() {
 
   console.log("Fish?!")
   return (
-    <div className="">
-      <div className="flex justify-center">
-        <div className="max-w-screen-md">
-
-        </div>
-      </div>
-      <div className="flex grid grid-cols-2 justify-center m-4">
-        <div className="flex-none">
+    <div className="w-full">
+      <div className="flex-1 grid grid-cols-2 justify-center m-4">
+        <div className="w-full border-4 border-black">
           <Board
             x={data.width}
             y={data.height}
             pieces={data.pieces}
           />
         </div>
-        <div className="w-1/3">
-          GAME!!!! {JSON.stringify(data)}
-          {JSON.stringify(moves)}
+        <div className="w-full">
+          <span className="bg-red-100 w-full"> {JSON.stringify(moves)} </span>
         </div>
       </div>
 
