@@ -22,6 +22,7 @@ class Piece: # A generic piece
 
             self.x, self.y = (x, y)
             board.half_move_number += 1
+            board.turn = 'white' if board.turn == 'black' else 'black'
 
             return True
         else:
