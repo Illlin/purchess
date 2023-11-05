@@ -133,6 +133,38 @@ class PawnPiece(Piece):
 
         # TODO: En passant
 
+class PeonPiece(Piece):
+    def __init__(self, x, y, colour):
+        Piece.__init__(self, "pawn", x, y, colour)
+
+        # Which move did I move two squares forward?
+        # Used for calculating EN PASSANT
+        self.when_moved_two = None
+
+    def get_moves(self, board):
+        # White pawns move -y, black pawns move +y
+        # White pawns take diagonally at (-1, -1) and (1, -1)
+        # Black pawns take diagonally at (-1, 1) and (1, 1)
+
+        destinations = []
+        
+        offy = -1 if self.colour == 'white' else 1
+        can_twostep = (self.y == board.height-2) if self.colour == 'white' else (self.y == 1)
+
+        if (self.y + offy >= 0 and self.y + offy < board.height 
+            and board.piece_at(self.x, self.y + offy) == None):
+            destinations.append((self.x, self.y + offy))
+
+        takes = [(self.x-1, self.y+offy), (self.x+1, self.y+offy)]
+        for t in takes:
+            to_take = board.piece_at(*t)
+            if to_take != None and to_take.colour != self.colour:
+                destinations.append(t)
+
+        return destinations
+
+        # TODO: En passant
+
 class Board:
     def __init__(self, width, height):
         self.width = width

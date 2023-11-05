@@ -17,16 +17,31 @@ piece_types = {
                       ((1,0), -1, False), ((-1,0), -1, False)],
         'knightlike': False
     }),
+    "siege_tower": chess.ParamPiece("siege_tower", 0,0,'', {
+        'movements': [((0,1), -1, True), ((0,-1), -1, True),
+                      ((1,0), -1, True), ((-1,0), -1, True)],
+        'knightlike': False
+    }),
     "bishop": chess.ParamPiece("bishop", 0,0,'', {
         'movements': [((1,1), -1, False), ((1,-1), -1, False),
                       ((-1,-1), -1, False), ((-1,1), -1, False)],
+        'knightlike': False
+    }),
+    "shaman": chess.ParamPiece("shaman", 0,0,'', {
+        'movements': [((1,1), 2, True), ((1,-1), 2, True),
+                      ((-1,-1), -1, True), ((-1,1), -1, True)],
         'knightlike': False
     }),
     "knight": chess.ParamPiece("knight", 0,0,'', {
         'movements': [],
         'knightlike': True, 'knightdist_a': 1, 'knightdist_b': 2,
     }),
+    "knave": chess.ParamPiece("knave", 0,0,'', {
+        'movements': [],
+        'knightlike': True, 'knightdist_a': 2, 'knightdist_b': 2,
+    }),
     "pawn": chess.PawnPiece(0,0,''),
+    "peon": chess.PeonPiece(0,0,''),
     "priest": chess.ParamPiece("priest", 0,0,'', {
         'movements': [((1,1), 2, False), ((1,-1), 2, False),
                       ((-1,-1), 2, False), ((-1,1), 2, False)],
@@ -68,6 +83,13 @@ piece_types = {
                       ((1,0), -1, False), ((-1,0), -1, False),
                       ((1,1), -1, False), ((1,-1), -1, False),
                       ((-1,-1), -1, False), ((-1,1), -1, False)],
+        'knightlike': False
+    }),
+    "princess": chess.ParamPiece("princess", 0,0,'', {
+        'movements': [((0,1), 2, False), ((0,2), 2, False),
+                      ((1,0), 2, False), ((-1,0), 2, False),
+                      ((1,1), 2, False), ((1,-1), 2, False),
+                      ((-1,-1), 2, False), ((-1,1), 2, False)],
         'knightlike': False
     }),
     "empress": chess.ParamPiece("empress", 0,0,'', {
@@ -133,42 +155,42 @@ setups = {
                 {"x":7, "y":7, "type":"rook", "colour":"white"}
         ]
     },
-    "ClassicCaleb": {
-        "width": 8,
-        "height": 8,
+    "Horse Lords vs. Castle Folk": {
+        "width": 6,
+        "height": 10,
         "pieces": [
                 {"x":0, "y":0, "type":"knook", "colour":"black"},
                 {"x":1, "y":0, "type":"princess", "colour":"black"},
                 {"x":2, "y":0, "type":"queen", "colour":"black"},
                 {"x":3, "y":0, "type":"king", "colour":"black"},
-                {"x":4, "y":0, "type":"king", "colour":"black"},
-                {"x":5, "y":0, "type":"bishop", "colour":"black"},
-                {"x":6, "y":0, "type":"knight", "colour":"black"},
-                {"x":7, "y":0, "type":"rook", "colour":"black"},
-                {"x":0, "y":1, "type":"pawn", "colour":"black"},
-                {"x":1, "y":1, "type":"pawn", "colour":"black"},
-                {"x":2, "y":1, "type":"pawn", "colour":"black"},
-                {"x":3, "y":1, "type":"pawn", "colour":"black"},
-                {"x":4, "y":1, "type":"pawn", "colour":"black"},
-                {"x":5, "y":1, "type":"pawn", "colour":"black"},
-                {"x":6, "y":1, "type":"pawn", "colour":"black"},
-                {"x":7, "y":1, "type":"pawn", "colour":"black"},
-                {"x":0, "y":6, "type":"pawn", "colour":"white"},
+                {"x":4, "y":0, "type":"princess", "colour":"black"},
+                {"x":5, "y":0, "type":"knook", "colour":"black"},
+                {"x":1, "y":1, "type":"rock", "colour":"black"},
+                {"x":2, "y":1, "type":"knave", "colour":"black"},
+                {"x":3, "y":1, "type":"priest", "colour":"black"},
+                {"x":4, "y":1, "type":"cardinal", "colour":"black"},
+                {"x":5, "y":1, "type":"knave", "colour":"black"},
+                {"x":6, "y":1, "type":"rock", "colour":"black"},
+                {"x":1, "y":2, "type":"peon", "colour":"black"},
+                {"x":2, "y":2, "type":"peon", "colour":"black"},
+                {"x":3, "y":2, "type":"peon", "colour":"black"},
+                {"x":4, "y":2, "type":"peon", "colour":"black"},
+                {"x":0, "y":5, "type":"rock", "colour":"white"},
+                {"x":6, "y":5, "type":"rock", "colour":"white"},
+                {"x":0, "y":6, "type":"siege_tower", "colour":"white"},
                 {"x":1, "y":6, "type":"pawn", "colour":"white"},
                 {"x":2, "y":6, "type":"pawn", "colour":"white"},
                 {"x":3, "y":6, "type":"pawn", "colour":"white"},
                 {"x":4, "y":6, "type":"pawn", "colour":"white"},
                 {"x":5, "y":6, "type":"pawn", "colour":"white"},
-                {"x":6, "y":6, "type":"pawn", "colour":"white"},
-                {"x":7, "y":6, "type":"pawn", "colour":"white"},
-                {"x":0, "y":7, "type":"rook", "colour":"white"},
-                {"x":1, "y":7, "type":"knight", "colour":"white"},
-                {"x":2, "y":7, "type":"bishop", "colour":"white"},
-                {"x":3, "y":7, "type":"queen", "colour":"white"},
+                {"x":6, "y":6, "type":"siege_tower", "colour":"white"},
+                {"x":1, "y":7, "type":"giraffe", "colour":"white"},
+                {"x":2, "y":7, "type":"shaman", "colour":"white"},
+                {"x":3, "y":7, "type":"empress", "colour":"white"},
                 {"x":4, "y":7, "type":"king", "colour":"white"},
-                {"x":5, "y":7, "type":"bishop", "colour":"white"},
-                {"x":6, "y":7, "type":"knight", "colour":"white"},
-                {"x":7, "y":7, "type":"rook", "colour":"white"}
+                {"x":5, "y":7, "type":"shaman", "colour":"white"},
+                {"x":6, "y":7, "type":"giraffe", "colour":"white"},
+
         ]
     }
 }
