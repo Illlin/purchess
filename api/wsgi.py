@@ -155,6 +155,48 @@ setups = {
                 {"x":7, "y":7, "type":"rook", "colour":"white"}
         ]
     },
+    "Henry VIII vs. The Church": {
+        "width": 10,
+        "height": 10,
+        "pieces": [
+                {"x":0, "y":0, "type":"rook", "colour":"black"},
+                {"x":1, "y":0, "type":"crusader", "colour":"black"},
+                {"x":2, "y":0, "type":"bishop", "colour":"black"},
+                {"x":3, "y":0, "type":"cardinal", "colour":"black"},
+                {"x":4, "y":0, "type":"king", "colour":"black"},
+                {"x":5, "y":0, "type":"paladin", "colour":"black"},
+                {"x":6, "y":0, "type":"cardinal", "colour":"black"},
+                {"x":7, "y":0, "type":"bishop", "colour":"black"},
+                {"x":8, "y":0, "type":"crusader", "colour":"black"},
+                {"x":9, "y":0, "type":"rook", "colour":"black"},
+                {"x":0, "y":1, "type":"pawn", "colour":"black"},
+                {"x":1, "y":1, "type":"pawn", "colour":"black"},
+                {"x":2, "y":1, "type":"pawn", "colour":"black"},
+                {"x":3, "y":1, "type":"pawn", "colour":"black"},
+                {"x":4, "y":1, "type":"pawn", "colour":"black"},
+                {"x":5, "y":1, "type":"pawn", "colour":"black"},
+                {"x":6, "y":1, "type":"pawn", "colour":"black"},
+                {"x":7, "y":1, "type":"pawn", "colour":"black"},
+                {"x":8, "y":1, "type":"pawn", "colour":"black"},
+                {"x":9, "y":1, "type":"pawn", "colour":"black"},
+                {"x":0, "y":6, "type":"pawn", "colour":"white"},
+                {"x":1, "y":6, "type":"pawn", "colour":"white"},
+                {"x":2, "y":6, "type":"pawn", "colour":"white"},
+                {"x":3, "y":6, "type":"pawn", "colour":"white"},
+                {"x":4, "y":6, "type":"pawn", "colour":"white"},
+                {"x":5, "y":6, "type":"pawn", "colour":"white"},
+                {"x":6, "y":6, "type":"pawn", "colour":"white"},
+                {"x":7, "y":6, "type":"pawn", "colour":"white"},
+                {"x":0, "y":7, "type":"rook", "colour":"white"},
+                {"x":1, "y":7, "type":"knight", "colour":"white"},
+                {"x":2, "y":7, "type":"bishop", "colour":"white"},
+                {"x":3, "y":7, "type":"queen", "colour":"white"},
+                {"x":4, "y":7, "type":"king", "colour":"white"},
+                {"x":5, "y":7, "type":"bishop", "colour":"white"},
+                {"x":6, "y":7, "type":"knight", "colour":"white"},
+                {"x":7, "y":7, "type":"rook", "colour":"white"}
+        ]
+    },
     "Horse Lords vs. Castle Folk": {
         "width": 6,
         "height": 10,
@@ -175,8 +217,8 @@ setups = {
                 {"x":2, "y":2, "type":"peon", "colour":"black"},
                 {"x":3, "y":2, "type":"peon", "colour":"black"},
                 {"x":4, "y":2, "type":"peon", "colour":"black"},
-                {"x":0, "y":5, "type":"rock", "colour":"white"},
-                {"x":5, "y":5, "type":"rock", "colour":"white"},
+                {"x":0, "y":7, "type":"rock", "colour":"white"},
+                {"x":5, "y":7, "type":"rock", "colour":"white"},
                 {"x":0, "y":8, "type":"siege_tower", "colour":"white"},
                 {"x":1, "y":8, "type":"pawn", "colour":"white"},
                 {"x":2, "y":8, "type":"pawn", "colour":"white"},
@@ -218,6 +260,8 @@ def get_game_state(game_id):
     except KeyError:
         return {'message': 'Game doesn\'t exist'}, 400
 
+    username = None
+    colour = None
     try:
         username = request.cookies.get("user")
         print(f"Looking at game with username {username}")
@@ -227,8 +271,10 @@ def get_game_state(game_id):
                 game.players['white'] = username
             elif game.players['black'] == '':
                 game.players['black'] = username
+
+        colour = 'white' if game.players['white'] == username else 'black'
     except KeyError:
-        pass
+        colour = 'white'
 
     return {
         "game_id": game_id,
@@ -241,6 +287,7 @@ def get_game_state(game_id):
         "castling": game.castling,
         "pieces": [{"colour": p.colour, "x": p.x, "y": p.y, "type":p.name} for p in game.pieces],
         "winner": game.winner if game.winner else "none",
+        "colour": colour
     }
 
 @app.get("/api/game/<string:game_id>/valid_moves") # Get valid moves for current user
