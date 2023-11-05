@@ -77,6 +77,11 @@ piece_types = {
                       ((-1,-1), -1, False), ((-1,1), -1, False)],
         'knightlike': True, 'knightdist_a': 1, 'knightdist_b': 2
     }),
+    "shaman": chess.ParamPiece("shaman", 0,0,'', {
+        'movements': [((1,1), 2, True), ((1,-1), 2, True),
+                      ((-1,1), 2, True), ((-1, -1), 2, True)],
+        'knightlike': False
+    }),
 }
 
 setups = {
@@ -98,6 +103,44 @@ setups = {
                 {"x":1, "y":0, "type":"knight", "colour":"black"},
                 {"x":2, "y":0, "type":"bishop", "colour":"black"},
                 {"x":3, "y":0, "type":"queen", "colour":"black"},
+                {"x":4, "y":0, "type":"king", "colour":"black"},
+                {"x":5, "y":0, "type":"bishop", "colour":"black"},
+                {"x":6, "y":0, "type":"knight", "colour":"black"},
+                {"x":7, "y":0, "type":"rook", "colour":"black"},
+                {"x":0, "y":1, "type":"pawn", "colour":"black"},
+                {"x":1, "y":1, "type":"pawn", "colour":"black"},
+                {"x":2, "y":1, "type":"pawn", "colour":"black"},
+                {"x":3, "y":1, "type":"pawn", "colour":"black"},
+                {"x":4, "y":1, "type":"pawn", "colour":"black"},
+                {"x":5, "y":1, "type":"pawn", "colour":"black"},
+                {"x":6, "y":1, "type":"pawn", "colour":"black"},
+                {"x":7, "y":1, "type":"pawn", "colour":"black"},
+                {"x":0, "y":6, "type":"pawn", "colour":"white"},
+                {"x":1, "y":6, "type":"pawn", "colour":"white"},
+                {"x":2, "y":6, "type":"pawn", "colour":"white"},
+                {"x":3, "y":6, "type":"pawn", "colour":"white"},
+                {"x":4, "y":6, "type":"pawn", "colour":"white"},
+                {"x":5, "y":6, "type":"pawn", "colour":"white"},
+                {"x":6, "y":6, "type":"pawn", "colour":"white"},
+                {"x":7, "y":6, "type":"pawn", "colour":"white"},
+                {"x":0, "y":7, "type":"rook", "colour":"white"},
+                {"x":1, "y":7, "type":"knight", "colour":"white"},
+                {"x":2, "y":7, "type":"bishop", "colour":"white"},
+                {"x":3, "y":7, "type":"queen", "colour":"white"},
+                {"x":4, "y":7, "type":"king", "colour":"white"},
+                {"x":5, "y":7, "type":"bishop", "colour":"white"},
+                {"x":6, "y":7, "type":"knight", "colour":"white"},
+                {"x":7, "y":7, "type":"rook", "colour":"white"}
+        ]
+    },
+    "Standard": {
+        "width": 8,
+        "height": 8,
+        "pieces": [
+                {"x":0, "y":0, "type":"knook", "colour":"black"},
+                {"x":1, "y":0, "type":"princess", "colour":"black"},
+                {"x":2, "y":0, "type":"queen", "colour":"black"},
+                {"x":3, "y":0, "type":"king", "colour":"black"},
                 {"x":4, "y":0, "type":"king", "colour":"black"},
                 {"x":5, "y":0, "type":"bishop", "colour":"black"},
                 {"x":6, "y":0, "type":"knight", "colour":"black"},
@@ -176,7 +219,7 @@ def get_game_state(game_id):
         "turn": game.turn,
         "castling": game.castling,
         "pieces": [{"colour": p.colour, "x": p.x, "y": p.y, "type":p.name} for p in game.pieces],
-        "winner": winner if winner else "none",
+        "winner": game.winner if game.winner else "none",
     }
 
 @app.get("/api/game/<string:game_id>/valid_moves") # Get valid moves for current user
