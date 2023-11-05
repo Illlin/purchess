@@ -231,6 +231,9 @@ def get_moves(game_id):
 
         moves = []
 
+        if game.winner != None:
+            return {"player_colour": colour, "username": username, "moves": []}
+
         if colour != game.turn:
             return {"player_colour": colour, "username": username, "moves": []}
 
