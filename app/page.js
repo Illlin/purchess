@@ -78,7 +78,7 @@ export default function Home() {
             </div>
             <div>
               <Image 
-                src="/pieces/Knook.png"
+                src="/pieces/white/Knook.png"
                 width={256}
                 height={256}
                 alt="Knook"
